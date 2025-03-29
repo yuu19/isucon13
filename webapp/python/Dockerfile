@@ -18,7 +18,7 @@ RUN mkdir -p /home/isucon/webapp/python
 WORKDIR /home/isucon/webapp/python
 COPY --chown=isucon:isucon Pipfile /home/isucon/webapp/python/
 COPY --chown=isucon:isucon Pipfile.lock /home/isucon/webapp/python/
-RUN pipenv install
+RUN pipenv install --python /usr/local/bin/python3.12
 COPY --chown=isucon:isucon models.py /home/isucon/webapp/python/
 COPY --chown=isucon:isucon app.py /home/isucon/webapp/python/
 

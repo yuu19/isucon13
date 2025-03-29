@@ -50,6 +50,19 @@ services:
     depends_on:
       mysql:
         condition: service_healthy
+  #追加
+  phpmyadmin:
+    image: phpmyadmin
+    depends_on:
+      - mysql
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOSTS=mysql  # MySQL コンテナのホスト名
+      - PMA_PORT=3306 # MySQL のポート
+      - PMA_USER=root # MySQL のユーザ名
+      - PMA_PASSWORD=root # MySQL のパスワード
+    ports:
+      - "3001:80"
 
 volumes:
   mysql_volume:
